@@ -28,8 +28,13 @@ mod tests {
 
     #[test]
     fn big_number() {
-        assert_eq!(factorial(17), 355687428096000);
+        assert_eq!(factorial(17),  355687428096000);
+    }
 
+    #[test]
+    #[should_panic]
+    fn oh_no() {
+        factorial(100);
     }
 
 }
