@@ -12,3 +12,7 @@ path = "src/binary-search.rs"
 [[bin]]
 name = "factorial"
 path = "src/factorial.rs"
+
+[[bin]]
+name = "sum-elements"
+path = "src/sum-elements.rs"

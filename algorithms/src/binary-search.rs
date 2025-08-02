@@ -8,7 +8,9 @@ fn bin_search(arr: &[i64], a: i64) -> Result<usize, ()> {
         } else if a > arr[mid] {
             left = mid + 1;
         } else if a < arr[mid] {
-            if mid == 0 { return Err(()) }
+            if mid == 0 {
+                return Err(());
+            }
             right = mid - 1;
         }
     }
@@ -38,13 +40,13 @@ mod tests {
     fn off_right() {
         let v = vec![-23, 1, 2, 3, 6, 10, 11, 12, 13, 83, 91, 100];
         assert_eq!(bin_search(v.as_slice(), 101), Err(()));
-        assert_eq!(bin_search(v.as_slice(), 10000 ), Err(()));
+        assert_eq!(bin_search(v.as_slice(), 10000), Err(()));
     }
 
     #[test]
     fn missing_in_range() {
         let v = vec![-23, 1, 2, 3, 6, 10, 11, 12, 13, 83, 91, 100];
-        assert_eq!(bin_search(v.as_slice(), 0 ), Err(()));
+        assert_eq!(bin_search(v.as_slice(), 0), Err(()));
         assert_eq!(bin_search(v.as_slice(), 9), Err(()));
         assert_eq!(bin_search(v.as_slice(), -22), Err(()));
         assert_eq!(bin_search(v.as_slice(), 99), Err(()));
@@ -54,7 +56,7 @@ mod tests {
     fn good_searches() {
         let v = vec![-23, 1, 2, 3, 6, 10, 11, 12, 13, 83, 91, 100];
         assert_eq!(bin_search(v.as_slice(), v[0]), Ok(0));
-        assert_eq!(bin_search(v.as_slice(), v[v.len() - 1]), Ok(v.len()-1));
+        assert_eq!(bin_search(v.as_slice(), v[v.len() - 1]), Ok(v.len() - 1));
         assert_eq!(bin_search(v.as_slice(), v[v.len() / 2]), Ok(v.len() / 2));
         assert_eq!(bin_search(v.as_slice(), v[0]), Ok(0));
     }
